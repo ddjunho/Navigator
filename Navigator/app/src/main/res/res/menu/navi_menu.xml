@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:title="홈"
+        android:icon="@drawable/ic_home"/>
+
+    <item
+        android:id="@+id/outsideFragment"
+        android:title="외부 네비"
+        android:icon="@drawable/ic_outside_navigation"/>
+
+    <item
+        android:id="@+id/navihomeFragment"
+        android:title="내부 네비"
+        android:icon="@drawable/ic_camera"/>
+
+    <item
+        android:id="@+id/calenderFragment"
+        android:title="시간표"
+        android:icon="@drawable/ic_calendar_month"/>
+
+
+
+</menu>

@@ -1,0 +1,39 @@
+<resources>
+    <!--<string name="app_name_user" translatable="false">FESTU Navigator</string>
+    <string name="app_name_admin" translatable="false">Navigator Admin</string>-->
+    <string name="initialize">그래프를 초기화하세요</string>
+    <string name="scan">카메라를 강의실 번호에 맞춰주세요</string>
+    <string name="orientate">핸드폰을 움직여서 강의실 번호를 맞춰주세요</string>
+    <string name="link">링크</string>
+    <string name="delete">삭제</string>
+    <string name="entry">번호입력</string>
+    <string name="path">경로설정</string>
+    <string name="cancel">취소</string>
+    <string name="confirm_place">텍스트가 올바르게 배치되었습니까?</string>
+    <string name="from">출발지</string>
+    <string name="to">도착지</string>
+    <string name="main">본관</string>
+    <string name="lab">실험실</string>
+    <string name="first_tower">타워 번호1</string>
+    <string name="second_tower">타워 번호2</string>
+    <string name="second_building">2번째 건물</string>
+    <string name="floor">층 번호</string>
+    <string name="incorrect_number">해당 번호를 찾을 수 없습니다</string>
+    <string name="no_path">경로가 없습니다</string>
+    <string name="going">%s(으)로 이동 중</string>
+    <string name="init_failed">초기화 실패</string>
+    <string name="install_arcode">ARCore를 설치하세요</string>
+    <string name="update_arcode">ARCore를 업데이트하세요</string>
+    <string name="update_app">이 앱을 업데이트하세요</string>
+    <string name="no_arcore_support">이 디바이스는 AR을 지원하지 않습니다</string>
+    <string name="camera_not_available">카메라를 사용할 수 없습니다. 앱을 재시작해보세요</string>
+    <string name="failed_to_create_session">AR 세션을 생성하는 데 실패했습니다</string>
+    <string name="provide_camera_permission">카메라 권한을 제공하세요</string>
+    <string name="accept">수락</string>
+    <string name="reject">거부</string>
+    <string name="entry_already_exists">입구가 이미 존재합니다</string>
+    <string name="node_created">노드가 생성되었습니다</string>
+    <string name="node_deleted">노드가 삭제되었습니다</string>
+    <string name="link_created">링크가 생성되었습니다</string>
+    <string name="start_typing">입력을 시작하세요…</string>
+</resources>

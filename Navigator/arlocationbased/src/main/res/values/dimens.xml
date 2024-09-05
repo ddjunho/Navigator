@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="arrow_stroke_width">2dp</dimen>
+    <dimen name="bottom_margin">100dp</dimen>
+</resources>

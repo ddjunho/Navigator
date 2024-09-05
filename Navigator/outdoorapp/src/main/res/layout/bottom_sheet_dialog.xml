@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:orientation="vertical">
+
+
+        <!--text view for displaying course name-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageViewLocationType"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/atm_locations_50"
+                app:tint="#DB7000" />
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/imageViewLocationType"
+                android:gravity="start"
+                android:text="ATM"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textViewDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewTitle"
+                android:layout_toRightOf="@+id/imageViewLocationType"
+                android:text="CBA Branch, Kannurahalli Road, Hosakote, 562114, Karnataka, India"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+            <TextView
+                android:id="@+id/textViewDistance"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_below="@+id/imageViewLocationType"
+                android:text="10.5km"
+                android:textStyle="bold"
+                android:textColor="#DB7000"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp" />
+        </RelativeLayout>
+        <!--text view for displaying course tracks-->
+
+
+        <!--text view for displaying course duration-->
+
+
+        <!--button for dismissing our dialog-->
+        <Button
+            android:id="@+id/buttonDirection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="Direction"
+            android:textSize="18sp"
+            android:textAllCaps="false"
+            android:textColor="#DB7000" />
+
+        <Button
+            android:id="@+id/idBtnDismiss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/round_border_button"
+            android:text="Close"
+            android:textSize="18sp"
+            android:textAllCaps="true"
+            android:textColor="#DB7000" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
