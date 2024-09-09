@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.festunavigator.R
+import com.example.festunavigator.data.App
 import com.example.festunavigator.databinding.FragmentRouterBinding
 import com.example.festunavigator.domain.hit_test.HitTestResult
 import com.example.festunavigator.domain.use_cases.GetDestinationDesc
@@ -21,6 +22,7 @@ import com.example.festunavigator.presentation.preview.MainEvent
 import com.example.festunavigator.presentation.preview.MainShareModel
 import com.example.festunavigator.presentation.scanner.ScannerFragment
 import com.example.festunavigator.presentation.search.SearchFragment
+import dagger.hilt.android.AndroidEntryPoint
 import dev.romainguy.kotlin.math.Float2
 import dev.romainguy.kotlin.math.Float3
 import dev.romainguy.kotlin.math.Quaternion
@@ -28,9 +30,10 @@ import io.github.sceneview.ar.arcore.ArFrame
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class RouterFragment: Fragment() {
 
-    private val mainModel: MainShareModel by activityViewModels()
+    private val mainModel: MainShareModel by viewModels()
 
     @Inject
     lateinit var destinationDesc: GetDestinationDesc
@@ -50,7 +53,12 @@ class RouterFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        binding.adminPanel.isVisible = true
+        if (App.mode == App.ADMIN_MODE) {
+            binding.adminPanel.isVisible = true
+        }
+        else {
+            binding.adminPanel.isGone = true
+        }
 
         binding.deleteButton.setOnClickListener {
             removeSelectedNode()

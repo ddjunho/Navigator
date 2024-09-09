@@ -17,7 +17,11 @@ import java.util.Locale
 class MainActivity : ARActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        // EXIT 인텐트를 처리
+        if (intent.getBooleanExtra("EXIT", false)) {
+            finish()
+            return
+        }
         initBottomSheetDialog()
 
         val list = ArrayList<Place>()

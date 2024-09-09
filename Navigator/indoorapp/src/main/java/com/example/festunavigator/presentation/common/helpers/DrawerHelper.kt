@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.festunavigator.R
+import com.example.festunavigator.data.App
 import com.example.festunavigator.domain.hit_test.OrientatedPosition
 import com.example.festunavigator.domain.pathfinding.Path
 import com.example.festunavigator.domain.tree.Tree
@@ -13,11 +14,7 @@ import com.example.festunavigator.domain.tree.TreeNode
 import com.google.ar.core.Anchor
 import com.google.ar.sceneform.math.Quaternion
 import com.google.ar.sceneform.math.Vector3
-import com.google.ar.sceneform.rendering.Material
-import com.google.ar.sceneform.rendering.MaterialFactory
-import com.google.ar.sceneform.rendering.ShapeFactory
-import com.google.ar.sceneform.rendering.ViewRenderable
-import com.google.ar.sceneform.rendering.ViewSizer
+import com.google.ar.sceneform.rendering.*
 import com.uchuhimo.collections.MutableBiMap
 import dev.romainguy.kotlin.math.Float3
 import io.github.sceneview.ar.ArSceneView
@@ -53,6 +50,7 @@ class DrawerHelper(
     private var labelAnimationPart = 10
     private var arrowAnimationPart = 15
     private val bias = 0.15f
+
     private val animationJobs = mutableMapOf<ArNode, Job>()
 
     suspend fun drawNode(
@@ -163,6 +161,7 @@ class DrawerHelper(
             OrientatedPosition(treeNode.position, treeNode.forwardVector),
             surfaceView
         ).apply {
+            if (App.isAdmin) {
                 addChild(
                     drawArNode(
                         model = entryModel,
@@ -173,6 +172,7 @@ class DrawerHelper(
                         anchor = anchor
                     )
                 )
+            }
         }
 
     }

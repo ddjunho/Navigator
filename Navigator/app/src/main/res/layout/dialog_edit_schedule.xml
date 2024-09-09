@@ -1,0 +1,83 @@
+<!-- res/layout/dialog_edit_schedule.xml -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"> <!-- Ensures that the ScrollView fills the screen -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Schedule"
+            android:textSize="18sp"
+            android:paddingBottom="16dp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/schedule_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Schedule Name"
+            android:padding="12dp"
+            android:textColorHint="@android:color/darker_gray" />
+
+        <EditText
+            android:id="@+id/room_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Room Info"
+            android:padding="12dp"
+            android:textColorHint="@android:color/darker_gray"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Day"
+            android:textSize="16sp"
+            android:paddingTop="16dp" />
+
+        <Spinner
+            android:id="@+id/day_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Time"
+            android:textSize="16sp"
+            android:paddingTop="16dp" />
+
+        <TimePicker
+            android:id="@+id/start_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End Time"
+            android:textSize="16sp"
+            android:paddingTop="16dp" />
+
+        <TimePicker
+            android:id="@+id/end_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner"
+            android:layout_marginTop="4dp" />
+
+    </LinearLayout>
+
+</ScrollView>

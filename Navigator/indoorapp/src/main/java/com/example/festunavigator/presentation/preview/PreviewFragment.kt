@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.festunavigator.R
+import com.example.festunavigator.data.App
 import com.example.festunavigator.databinding.FragmentPreviewBinding
 import com.example.festunavigator.domain.tree.TreeNode
 import com.example.festunavigator.domain.tree.WrongEntryException
@@ -40,7 +41,7 @@ import kotlinx.coroutines.launch
 
 class PreviewFragment : Fragment() {
 
-    private val mainModel: MainShareModel by activityViewModels()
+    private val mainModel: MainShareModel by viewModels()
 
     private var _binding: FragmentPreviewBinding? = null
     private val binding get() = _binding!!
@@ -99,7 +100,7 @@ class PreviewFragment : Fragment() {
         )
 
         binding.sceneView.apply {
-            planeRenderer.isVisible = true
+            planeRenderer.isVisible = App.mode == App.ADMIN_MODE
             instructions.enabled = false
             onArFrame = { frame ->
                 onDrawFrame(frame)
@@ -111,7 +112,7 @@ class PreviewFragment : Fragment() {
                 config.instantPlacementMode = Config.InstantPlacementMode.DISABLED
             }
             onTap = { node, _, _ ->
-
+                if (App.mode == App.ADMIN_MODE) {
                     node?.let { it ->
                         if (!mainModel.linkPlacementMode.value) {
                             selectNode(it as ArNode)
@@ -122,7 +123,7 @@ class PreviewFragment : Fragment() {
                             }
                         }
                     }
-
+                }
             }
 
             onArSessionFailed = { exception ->
@@ -143,7 +144,7 @@ class PreviewFragment : Fragment() {
         selectNode(null)
 
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED){
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
                 mainModel.pathState.collectLatest { pathState ->
                     //In ADMIN_MODE, all entry labels are drawn automatically, so another redraw from this function
                     //will cause node
@@ -188,7 +189,7 @@ class PreviewFragment : Fragment() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED){
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
                 mainModel.mainUiEvents.collectLatest { uiEvent ->
                     when (uiEvent) {
                         is MainUiEvent.InitSuccess -> {
@@ -229,7 +230,7 @@ class PreviewFragment : Fragment() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED){
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
                 mainModel.confirmationObject.collectLatest { confObject ->
                     confObjectJob?.cancel()
                     confObjectJob = viewLifecycleOwner.lifecycleScope.launch {
@@ -273,9 +274,11 @@ class PreviewFragment : Fragment() {
         if (System.currentTimeMillis() - lastPositionTime > POSITION_DETECT_DELAY){
             lastPositionTime = System.currentTimeMillis()
             changeViewablePath(userPos)
+            if (App.mode == App.ADMIN_MODE) {
                 changeViewableTree(userPos)
                 mainModel.selectedNode.value?.let { node ->
                     checkSelectedNode(node)
+                }
             }
         }
     }
@@ -351,11 +354,11 @@ class PreviewFragment : Fragment() {
 
     companion object {
         //how many path nodes will be displayed at the moment
-        const val VIEWABLE_PATH_NODES = 21
+        const val VIEWABLE_PATH_NODES = 31
         //distance of viewable nodes for admin mode
         const val VIEWABLE_ADMIN_NODES = 8f
         //how often the check for path and tree redraw will be
-        const val POSITION_DETECT_DELAY = 1000L
+        const val POSITION_DETECT_DELAY = 500L
         //image crop for recognition
         val DESIRED_CROP = Pair(8, 72)
     }

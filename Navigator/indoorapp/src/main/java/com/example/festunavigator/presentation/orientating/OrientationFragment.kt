@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -18,14 +18,16 @@ import com.example.festunavigator.databinding.FragmentOrientationBinding
 import com.example.festunavigator.presentation.preview.MainShareModel
 import com.example.festunavigator.presentation.scanner.ScannerFragment
 import com.google.ar.core.Plane
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class OrientationFragment : Fragment() {
 
     private var _binding: FragmentOrientationBinding? = null
     private val binding get() = _binding!!
 
-    private val mainModel: MainShareModel by activityViewModels()
+    private val mainModel: MainShareModel by viewModels()
 
     private var navigating = false
 
@@ -39,7 +41,7 @@ class OrientationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 mainModel.frame.collect { frame ->
                     frame?.let {
                         if (frame.session.allPlanes.any { it.type == Plane.Type.VERTICAL }) {
@@ -63,7 +65,7 @@ class OrientationFragment : Fragment() {
             val animationPath = Path().apply {
                 setLastPoint(x, y)
                 lineTo(x + x/2, y)
-                lineTo(x, y - y/4)
+                lineTo(x, y - y/4, )
                 lineTo(x - x/2, y)
                 lineTo(x, y)
             }

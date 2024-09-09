@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -16,13 +16,12 @@ import com.example.festunavigator.databinding.FragmentConfirmBinding
 import com.example.festunavigator.presentation.preview.MainEvent
 import com.example.festunavigator.presentation.preview.MainShareModel
 import com.example.festunavigator.presentation.preview.MainUiEvent
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
 class ConfirmFragment : Fragment() {
 
-    private val mainModel: MainShareModel by activityViewModels()
+    private val mainModel: MainShareModel by viewModels()
 
     private var _binding: FragmentConfirmBinding? = null
     private val binding get() = _binding!!
@@ -67,7 +66,7 @@ class ConfirmFragment : Fragment() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 mainModel.mainUiEvents.collect { uiEvent ->
                         when (uiEvent) {
                             is MainUiEvent.InitSuccess -> {

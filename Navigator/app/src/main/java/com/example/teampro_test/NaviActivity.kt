@@ -72,36 +72,37 @@ class NaviActivity : AppCompatActivity() {
             if (calender != null) {
                 fragTransaction.show(calender)
             }
-            stopMainActivity()
+            stopOutdoorMainActivity()
         } else if (tag == TAG_HOME) {
             if (home != null) {
                 fragTransaction.show(home)
             }
-            stopMainActivity()
+            stopOutdoorMainActivity()
         } else if (tag == TAG_OUTSIDE) {
             if (outside != null) {
                 fragTransaction.show(outside)
             }
-            startMainActivity()
+            startOutdoorMainActivity()
         } else if (tag == TAG_NAVI_HOME) {
             if (navihome != null) {
                 fragTransaction.show(navihome)
             }
-            stopMainActivity()
+            stopOutdoorMainActivity()
         }
 
         fragTransaction.commitAllowingStateLoss()
     }
 
-    private fun startMainActivity() {
+    private fun startOutdoorMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 
-    private fun stopMainActivity() {
+    private fun stopOutdoorMainActivity() {
         val mainActivity = MainActivity::class.java
         val intent = Intent(this, mainActivity)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         sendBroadcast(intent)
     }
+
 }

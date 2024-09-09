@@ -2,8 +2,6 @@ plugins {
     //id 'com.android.library'
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -67,10 +65,7 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:1.4.3" // 호환되는 버전
     debugImplementation "androidx.compose.ui:ui-test-manifest:1.4.3" // 호환되는 버전
 
-
-    implementation "com.google.dagger:hilt-android:2.47"
-    kapt "com.google.dagger:hilt-compiler:2.47"
+    implementation 'com.github.islandparadise14:Mintable:1.5.1'
     implementation project(':outdoorapp')
-    implementation project(':indoorapp')
 }
 

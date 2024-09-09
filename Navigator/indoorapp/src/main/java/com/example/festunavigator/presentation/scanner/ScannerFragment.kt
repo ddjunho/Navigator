@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -25,17 +25,19 @@ import com.example.festunavigator.presentation.preview.MainShareModel
 import com.example.festunavigator.presentation.preview.PreviewFragment
 import com.google.ar.core.TrackingState
 import com.google.ar.core.exceptions.NotYetAvailableException
+import dagger.hilt.android.AndroidEntryPoint
 import dev.romainguy.kotlin.math.Float2
 import io.github.sceneview.ar.arcore.ArFrame
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-private const val SMOOTH_DELAY = 1.0
+private const val SMOOTH_DELAY = 0.5
 
+@AndroidEntryPoint
 class ScannerFragment: Fragment() {
 
-    private val mainModel: MainShareModel by activityViewModels()
+    private val mainModel: MainShareModel by viewModels()
 
     @Inject
     lateinit var hitTest: HitTest

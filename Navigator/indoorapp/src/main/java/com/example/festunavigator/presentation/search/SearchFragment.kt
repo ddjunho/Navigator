@@ -18,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.festunavigator.R
+import com.example.festunavigator.data.App
 import com.example.festunavigator.databinding.FragmentSearchBinding
 import com.example.festunavigator.domain.use_cases.GetDestinationDesc
 import com.example.festunavigator.presentation.search.adapters.EntriesAdapter
@@ -26,12 +27,14 @@ import com.example.festunavigator.presentation.common.helpers.viewHideInput
 import com.example.festunavigator.presentation.common.helpers.viewRequestInput
 import com.example.festunavigator.presentation.preview.MainEvent
 import com.example.festunavigator.presentation.preview.MainShareModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class SearchFragment: Fragment() {
 
     private val mainModel: MainShareModel by activityViewModels()

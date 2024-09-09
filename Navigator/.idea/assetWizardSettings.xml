@@ -33,9 +33,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="029b02" />
-                            <entry key="outputName" value="location_green" />
-                            <entry key="sourceFile" value="C:\Users\User\Desktop\ARCORE\AR-Location-Android-main\AR-Location-Android-main" />
+                            <entry key="outputName" value="dragon" />
+                            <entry key="sourceFile" value="C:\Users\User\Desktop\ARCORE\AR-Location-Android-main\AR-Location-Android-main (2)\AR-Location-Android-main\app\src\main\res\drawable\dragon.svg" />
                           </map>
                         </option>
                       </PersistentState>

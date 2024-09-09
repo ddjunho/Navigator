@@ -4,11 +4,13 @@ import android.annotation.SuppressLint
 import android.icu.util.Calendar
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.festunavigator.data.App
 import com.example.festunavigator.data.model.Record
 import com.example.festunavigator.domain.hit_test.HitTestResult
 import com.example.festunavigator.domain.repository.RecordsRepository
 import com.example.festunavigator.domain.tree.Tree
 import com.example.festunavigator.domain.tree.TreeNode
+import com.example.festunavigator.domain.tree.WrongEntryException
 import com.example.festunavigator.domain.use_cases.FindWay
 import com.example.festunavigator.presentation.LabelObject
 import com.example.festunavigator.presentation.confirmer.ConfirmFragment

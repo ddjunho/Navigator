@@ -1,6 +1,6 @@
 <resources>
-    <!--<string name="app_name_user" translatable="false">FESTU Navigator</string>
-    <string name="app_name_admin" translatable="false">Navigator Admin</string>-->
+    <string name="app_name_user" translatable="false">FESTU Navigator</string>
+    <string name="app_name_admin" translatable="false">Navigator Admin</string>
     <string name="initialize">그래프를 초기화하세요</string>
     <string name="scan">카메라를 강의실 번호에 맞춰주세요</string>
     <string name="orientate">핸드폰을 움직여서 강의실 번호를 맞춰주세요</string>
